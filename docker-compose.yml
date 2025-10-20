@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  java-server:
+    build:
+      context: .
+      dockerfile: java-server/Dockerfile
+    container_name: java-server
+    ports:
+      - "9090:9090"
+
+  python-client:
+    build:
+      context: .
+      dockerfile: python-client/Dockerfile
+    container_name: python-client
+    depends_on:
+      - java-server
